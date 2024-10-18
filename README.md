@@ -39,3 +39,41 @@ int main(void)
 } // The String 'foo' is automatically deallocated from memory if you are using GCC or Clang
 
 ```
+
+```C
+#include <knt.h>
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void)
+{
+    String foo = knt_string_from("foo");
+
+    if (foo == NULL)
+    {
+        return EXIT_FAILURE;
+    }
+
+    printf("'foo': \"%s\"\n", knt_string_as_str(foo));
+    
+    // knt_string_push adds a character to the end of a String. It returns true if the character was added successfully and false otherwise
+    if (!knt_string_push(foo, '_'))
+    {
+        return EXIT_FAILURE;
+    }
+
+    printf("'foo': \"%s\"\n", knt_string_as_str(foo));
+
+    // knt_string_push adds a string literal to the end of a String. It returns true if the character was added successfully and false otherwise
+    if (!knt_string_push_str(foo, "bar"))
+    {
+        return EXIT_FAILURE;
+    }
+
+    printf("'foo': \"%s\"\n", knt_string_as_str(foo));
+
+    return EXIT_SUCCESS;
+}
+
+```
