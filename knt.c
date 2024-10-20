@@ -56,6 +56,8 @@ _String* knt_string_new(void)
         return NULL;
     }
 
+    s->buf[0] = '\0';
+
     s->len = 0;
 
     s->capacity = 10;
